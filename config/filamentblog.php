@@ -39,8 +39,8 @@ return [
     'seo' => [
         'meta' => [
             'title' => 'TaniMaju',
-            'description' => 'This is filament blog seo meta description',
-            'keywords' => [],
+            'description' => 'Website Management Hasil Pangan',
+            'keywords' => ["Website Management Hasil Pangan", "Pertanian","Agrikultur","Desa Sukamaju","Desa Jawa Barat"],
         ],
     ],
 

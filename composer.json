@@ -17,6 +17,7 @@
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
         "maatwebsite/excel": "^3.1",
+        "pxlrbt/filament-excel": "^2.3",
         "troccoli/blade-health-icons": "^3.0"
     },
     "require-dev": {

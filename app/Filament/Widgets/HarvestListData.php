@@ -6,9 +6,9 @@ use App\Models\Panen; // Import the Panen model
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
-use Filament\Tables\Actions\ExportAction;
-use App\Filament\Exports\PanenExporter;
-use Filament\Actions\Exports\Enums\ExportFormat;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
+use pxlrbt\FilamentExcel\Columns\Column;
 
 class HarvestListData extends BaseWidget
 {
@@ -31,11 +31,15 @@ class HarvestListData extends BaseWidget
             ])
             ->actions([])
             ->headerActions([
-                ExportAction::make()
-                    ->exporter(PanenExporter::class)
-                    ->formats([
-                        ExportFormat::Csv,
-                    ])
+                ExportAction::make()->exports([
+                    ExcelExport::make()->withColumns([
+                        Column::make('petani.nama_petani')->heading('Nama Petani'),
+                        Column::make('tanaman.nama_tanaman')->heading('Tanaman'),
+                        Column::make('jumlah')->heading('Jumlah'),
+                        Column::make('sawah.nama_sawah')->heading('Sawah'),
+                        Column::make('updated_at')->heading('Tgl Panen'),
+                    ]),
+                ])
             ]);
     }
 }
