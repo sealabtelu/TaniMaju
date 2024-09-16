@@ -82,6 +82,12 @@
 
         .hero-section {
             padding: 0; /* Remove padding for the hero section */
+            width: 100vw; /* Ensure the hero section takes full viewport width */
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
         }
 
         /* Responsive styles */
@@ -185,7 +191,7 @@
 <body class="antialiased">
     <div class="min-h-screen">
         <x-blog-header title="{{ $setting?->title }}" logo="{{ $setting?->logoImage }}" />
-        <main class="md:px-16 px-0">{{ $slot }}</main>
+        <main class="md:px-16 px-0 relative">{{ $slot }}</main>
 
         <footer class="bg-olivine flex flex-col self-stretch px-16 gap-6 text-cornsilk py-6">
             <div class="flex md:justify-between md:flex-row flex-col">
