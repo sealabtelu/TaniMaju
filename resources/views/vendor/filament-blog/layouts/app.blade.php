@@ -183,12 +183,11 @@
         <x-blog-header title="{{ $setting?->title }}" logo="{{ $setting?->logoImage }}" />
         <main>{{ $slot }}</main>
 
-        <footer class="bg-olivine flex flex-col self-stretch px-16 gap-6 text-cornsilk py-6">
-            <div class="flex justify-between">
-                <div class="flex flex-col items-center justify-center text-sm font-medium h-full">
+        <footer class="bg-olivine flex flex-col self-stretch px-4 md:px-16 gap-4 md:gap-6 text-cornsilk py-6">
+            <div class="flex flex-col md:flex-row md:justify-between">
+                <div class="flex flex-col items-center md:items-start justify-center text-sm font-medium h-full mb-4 md:mb-0">
                     <div class="relative overflow-hidden font-medium rounded-2xl bg-sage px-6 py-4">
                         <div class="mb-1 pb-2 text-xl font-semibold">Address</div>
-                        {{-- <p class="mb-6 block font-light">Untuk mendapatkan informasi harian dan terkini!</p> --}}
                         <div class="flex flex-inline mb-6">
                             <x-fluentui-location-16 class="h-auto w-5 mr-2" />
                             <span>Desa Sukamaju, Jawa Barat, Indonesia</span>
@@ -197,28 +196,10 @@
                             <img src="{{ asset('../assets/logo-desasukamaju.png') }}" class="w-14" alt="Logo Desa Sukamaju">
                             <img src="{{ asset('../assets/logo-sea.png') }}" class="h-14 w-18" alt="Logo SEA Laboratory">
                         </div>
-                        {{-- <form method="post" action="{{ route('filamentblog.post.subscribe') }}">
-                            @csrf
-                            <label hidden for="email-address">Email</label>
-                            @error('email')
-                                <span class="text-xs text-red-500">{{ $message }}</span>
-                            @enderror
-                            <div class="relative">
-                                <input autocomplete="email" class="flex w-full rounded-xl border bg-white px-6 py-5 font-medium text-black outline-none placeholder:text-slate-600" name="email" value="{{ old('email') }}" placeholder="Masukkan Email" type="email">
-                                <button type="submit" class="absolute right-4 top-1/2 -translate-y-1/2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="text-primary h-8 w-8" viewBox="0 0 256 256">
-                                        <path fill="currentColor" d="m220.24 132.24l-72 72a6 6 0 0 1-8.48-8.48L201.51 134H40a6 6 0 0 1 0-12h161.51l-61.75-61.76a6 6 0 0 1 8.48-8.48l72 72a6 6 0 0 1 0 8.48" />
-                                    </svg>
-                                </button>
-                            </div>
-                            @if (session('success'))
-                                <span class="text-green-500">{{ session('success') }}</span>
-                            @endif
-                        </form> --}}
                         <i class="bi bi-envelope pointer-events-none absolute -right-10 -top-20 text-[9rem] opacity-10"></i>
                     </div>
                 </div>
-                <div class="md:flex md:flex-col grid gap-3 py-3 text-sm font-medium">
+                <div class="flex flex-col md:flex-col grid gap-3 py-3 text-sm font-medium">
                     <h4 class="text-xl font-semibold">Contact</h4>
                     <div class="flex flex-row">
                         <x-heroicon-s-phone class="h-auto w-5 mr-2" />
@@ -231,7 +212,7 @@
                 </div>
             </div>
             <div class="border-t border-2 border-sage/50"></div>
-            <div class="flex flex-col items-center justify-center">
+            <div class="flex items-center justify-center">
                 <span class="text-xs">© SEA LABORATORY 2024</span>
             </div>
         </footer>
