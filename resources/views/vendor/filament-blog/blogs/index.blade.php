@@ -52,16 +52,16 @@
                 dari kata <strong class="font-bold italic">"Tani"</strong> yang berarti pertanian dan <strong class="font-bold italic">"Maju"</strong> yang berarti kemajuan, mencerminkan tujuan kami
                 untuk memajukan sektor pertanian di Desa Sukamaju melalui teknologi. 
             </p>
-            <div class="flex items-start self-stretch justify-between items-center my-10 gap-x-2 md:gap-x-4">
+            <div class="flex items-start self-stretch justify-between items-center my-10 gap-x-2 md:gap-x-2">
                 @foreach ([
                     // ['name' => 'Sef Sofa Maulanaja', 'role' => 'Staff Team', 'image' => '../assets/SEF.png'],
                     ['name' => 'Panji Christopher', 'role' => 'Staff Team', 'image' => '../assets/YNA.png'],
                     ['name' => 'Axel David', 'role' => 'Project Team Leader', 'image' => '../assets/AXL.png'],
                     ['name' => 'Yogas Herlambang', 'role' => 'Staff Team', 'image' => '../assets/YOG.png'],
                 ] as $member)
-                    <div class="flex flex-col items-center text-center py-4">
-                        <img class="max-w-24 md:max-w-32" src="{{ $member['image'] }}" alt="">
-                        <span class="font-bold text-base text-olivine mt-2">{{ $member['name'] }}</span>
+                    <div class="flex flex-col items-center text-center py-2">
+                        <img class="max-w-20 md:max-w-24" src="{{ $member['image'] }}" alt="">
+                        <span class="font-bold text-sm text-olivine mt-1">{{ $member['name'] }}</span>
                         <span class="font-light text-xs text-olivine italic">{{ $member['role'] }}</span>
                     </div>
                 @endforeach
