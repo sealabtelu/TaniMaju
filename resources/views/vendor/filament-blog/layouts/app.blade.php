@@ -185,7 +185,7 @@
 
         <footer class="bg-olivine flex flex-col self-stretch px-4 md:px-16 gap-4 md:gap-6 text-cornsilk py-6">
             <div class="flex flex-col md:flex-row md:justify-between">
-                <div class="flex flex-col items-center md:items-start justify-center text-sm font-medium h-full mb-4 md:mb-0">
+                <div class="flex flex-col items-center md:items-start justify-center text-sm font-medium h-full">
                     <div class="relative overflow-hidden font-medium rounded-2xl bg-sage px-6 py-4">
                         <div class="mb-1 pb-2 text-xl font-semibold">Address</div>
                         <div class="flex flex-inline mb-6">
@@ -196,18 +196,16 @@
                             <img src="{{ asset('../assets/logo-desasukamaju.png') }}" class="w-14" alt="Logo Desa Sukamaju">
                             <img src="{{ asset('../assets/logo-sea.png') }}" class="h-14 w-18" alt="Logo SEA Laboratory">
                         </div>
+                        <h4 class="text-xl font-semibold mt-6">Contact</h4>
+                        <div class="flex flex-row">
+                            <x-heroicon-s-phone class="h-auto w-5 mr-2" />
+                            <span>+6285176860621</span>
+                        </div>
+                        <div class="flex flex-row">
+                            <x-ionicon-mail class="h-auto w-5 mr-2"/>
+                            <span>sealaboratory@365.telkomuniversity.ac.id</span>
+                        </div>
                         <i class="bi bi-envelope pointer-events-none absolute -right-10 -top-20 text-[9rem] opacity-10"></i>
-                    </div>
-                </div>
-                <div class="flex flex-col md:flex-col grid gap-3 py-3 text-sm font-medium">
-                    <h4 class="text-xl font-semibold">Contact</h4>
-                    <div class="flex flex-row">
-                        <x-heroicon-s-phone class="h-auto w-5 mr-2" />
-                        <span>+6285176860621</span>
-                    </div>
-                    <div class="flex flex-row">
-                        <x-ionicon-mail class="h-auto w-5 mr-2"/>
-                        <span>sealaboratory@365.telkomuniversity.ac.id</span>
                     </div>
                 </div>
             </div>
