@@ -181,7 +181,7 @@
 <body class="antialiased">
     <div class="min-h-screen">
         <x-blog-header title="{{ $setting?->title }}" logo="{{ $setting?->logoImage }}" />
-        <main>{{ $slot }}</main>
+        <main class="md:px-16 px-0">{{ $slot }}</main>
 
         <footer class="bg-olivine flex flex-col self-stretch px-16 gap-6 text-cornsilk py-6">
             <div class="flex md:justify-between md:flex-row flex-col">
