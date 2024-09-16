@@ -96,8 +96,8 @@
                 padding: 1rem;
             }
             .px-16 {
-                padding-left: 1rem;
-                padding-right: 1rem;
+                padding-left: 2rem;
+                padding-right: 2rem;
             }
         }
     </style>
@@ -191,7 +191,7 @@
 <body class="antialiased">
     <div class="min-h-screen">
         <x-blog-header title="{{ $setting?->title }}" logo="{{ $setting?->logoImage }}" />
-        <main class="px-0 relative">{{ $slot }}</main>
+        <main class="relative">{{ $slot }}</main>
 
         <footer class="bg-olivine flex flex-col self-stretch px-16 gap-6 text-cornsilk py-6">
             <div class="flex md:justify-between md:flex-row flex-col">
@@ -267,6 +267,16 @@
         function onSubmit(token) {
             document.getElementById("comment-box").submit();
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const spans = document.querySelectorAll('span.break-words');
+            spans.forEach(span => {
+                const words = span.textContent.split(' ');
+                if (words.length > 1) {
+                    span.innerHTML = words[0] + '<br>' + words.slice(1).join(' ');
+                }
+            });
+        });
     </script>
 
 </html>
