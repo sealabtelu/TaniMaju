@@ -1,4 +1,4 @@
-<div class="top-20 min-w-[15rem] origin-left transition duration-200 will-change-[shadow] translate-y-0">
+<div class="top-16 min-w-[12rem] md:min-w-[15rem] origin-left transition duration-200 will-change-[shadow] translate-y-0">
     <div class="relative z-0 rounded-2xl border bg-white py-4 shadow-xl">
         <div class="max-h-[65vh] list-none overflow-y-auto transition-all duration-300 translate-y-0 opacity-100">
             @foreach($categories as $category)

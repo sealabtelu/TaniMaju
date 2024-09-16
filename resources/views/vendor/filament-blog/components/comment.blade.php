@@ -3,7 +3,7 @@
     @csrf
     <div class="border-t-2 py-10">
         <div class="mb-7">
-            <h3 class="mb-2 text-2xl font-semibold">Leave a reply</h3>
+            <h3 class="mb-2 text-xl font-semibold">Leave a reply</h3>
         </div>
         <div class="mb-6">
             <label class="mb-2 block text-sm font-semibold" for="name">Name *</label>

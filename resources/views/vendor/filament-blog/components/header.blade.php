@@ -2,7 +2,7 @@
 <header class="sticky top-0 z-[94035]">
     <div class="py-4 bg-white border-b">
         <div class="container mx-auto">
-            <div class="flex justify-between gap-x-2">
+            <div class="flex flex-col md:flex-row justify-between gap-x-2">
                 <div class="flex items-center gap-x-10">
                     <a href="{{config('filamentblog.route.home.url') ?? config('app.url')}}">
                         <strong x-show="showTaniMaju" class="text-2xl text-olivine mr-6">
@@ -26,7 +26,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="flex items-center ml-auto gap-x-10">
+                <div class="flex items-center md:ml-auto gap-x-2 md:gap-x-10">
                     <form action="{{ route('filamentblog.post.search') }}" method="GET">
                         <div class="relative">
                             <div class="relative">
@@ -36,7 +36,7 @@
                                         <path stroke-linecap="round" d="M18.5 18.5L22 22" />
                                     </g>
                                 </svg>
-                                <input placeholder="Search" type="text" name="query" value="{{ request()->get('query') }}" class="w-full px-6 py-3 pl-12 text-sm font-medium text-gray-800 placeholder-gray-400 border rounded-full outline-none bg-white/10 placeholder:text-slate-500 focus:ring-0" />
+                                <input placeholder="Search" type="text" name="query" value="{{ request()->get('query') }}" class="w-full px-4 py-2 pl-10 text-sm font-medium text-gray-800 placeholder-gray-400 border rounded-full outline-none bg-white/10 placeholder:text-slate-500 focus:ring-0" />
                             </div>
                             @error('query')
                             <span class="text-xs text-red-500">{{ $message }}</span>
