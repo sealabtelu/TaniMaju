@@ -61,7 +61,7 @@
                 ] as $member)
                     <div class="flex flex-col items-center text-center py-4">
                         <img class="max-w-20 md:max-w-52" src="{{ $member['image'] }}" alt="">
-                        <span class="font-bold md:text-base text-sm text-olivine mt-2 break-words text-balance">
+                        <span class="font-bold md:text-base text-sm text-olivine mt-2 line-clamp-2 text-balance">
                             {{ $member['name'] }}
                         </span>
                         <span class="font-light md:text-sm text-xs text-olivine italic">{{ $member['role'] }}</span>
