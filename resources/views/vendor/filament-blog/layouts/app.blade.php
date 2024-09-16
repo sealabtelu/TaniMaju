@@ -181,7 +181,7 @@
 <body class="antialiased">
     <div class="min-h-screen">
         <x-blog-header title="{{ $setting?->title }}" logo="{{ $setting?->logoImage }}" />
-        <main>{{ $slot }}</main>
+        <main class="md:px-16 px-0">{{ $slot }}</main>
 
         <footer class="bg-olivine flex flex-col self-stretch px-16 gap-6 text-cornsilk py-6">
             <div class="flex md:justify-between md:flex-row flex-col">
@@ -193,9 +193,9 @@
                             <x-fluentui-location-16 class="h-auto w-5 mr-2" />
                             <span>Desa Sukamaju, Jawa Barat, Indonesia</span>
                         </div>
-                        <div class="flex flex-row mt-2 gap-4 flex-wrap">
-                            <img src="{{ asset('../assets/logo-desasukamaju.png') }}" class="" alt="Logo Desa Sukamaju">
-                            <img src="{{ asset('../assets/logo-sea.png') }}" class="h-14 w-14" alt="Logo SEA Laboratory">
+                        <div class="flex flex-row mt-2 gap-4">
+                            <img src="{{ asset('../assets/logo-desasukamaju.png') }}" class="w-14" alt="Logo Desa Sukamaju">
+                            <img src="{{ asset('../assets/logo-sea.png') }}" class="h-14 w-18" alt="Logo SEA Laboratory">
                         </div>
                         {{-- <form method="post" action="{{ route('filamentblog.post.subscribe') }}">
                             @csrf
@@ -221,12 +221,12 @@
                 <div class="md:flex md:flex-col grid gap-3 py-3 text-sm font-medium md:w-1/2">
                     <h4 class="text-xl font-semibold">Contact</h4>
                     <div class="flex flex-row">
-                        <x-heroicon-s-phone class="h-auto mr-2" />
+                        <x-heroicon-s-phone class="h-auto w-5 mr-2" />
                         <span>+6285176860621</span>
                     </div>
                     <div class="flex flex-row">
-                        <x-ionicon-mail class="h-auto mr-2"/>
-                        <span class="break-all">sealaboratory@365.telkomuniversity.ac.id</span>
+                        <x-ionicon-mail class="h-auto w-5 mr-2"/>
+                        <span>sealaboratory@365.telkomuniversity.ac.id</span>
                     </div>
                 </div>
             </div>
