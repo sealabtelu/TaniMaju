@@ -80,6 +80,10 @@
             -webkit-line-clamp: 2;
         }
 
+        .hero-section {
+            padding: 0; /* Remove padding for the hero section */
+        }
+
         /* Responsive styles */
         @media (max-width: 640px) {
             footer {
