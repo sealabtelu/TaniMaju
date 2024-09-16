@@ -184,8 +184,8 @@
         <main>{{ $slot }}</main>
 
         <footer class="bg-olivine flex flex-col self-stretch px-16 gap-6 text-cornsilk py-6">
-            <div class="flex justify-between">
-                <div class="flex flex-col items-center justify-center text-sm font-medium h-full">
+            <div class="flex md:justify-between md:flex-row flex-col">
+                <div class="flex flex-col items-center justify-center text-sm font-medium h-full md:w-1/2">
                     <div class="relative overflow-hidden font-medium rounded-2xl bg-sage px-6 py-4">
                         <div class="mb-1 pb-2 text-xl font-semibold">Address</div>
                         {{-- <p class="mb-6 block font-light">Untuk mendapatkan informasi harian dan terkini!</p> --}}
@@ -218,7 +218,7 @@
                         <i class="bi bi-envelope pointer-events-none absolute -right-10 -top-20 text-[9rem] opacity-10"></i>
                     </div>
                 </div>
-                <div class="md:flex md:flex-col grid gap-3 py-3 text-sm font-medium">
+                <div class="md:flex md:flex-col grid gap-3 py-3 text-sm font-medium md:w-1/2">
                     <h4 class="text-xl font-semibold">Contact</h4>
                     <div class="flex flex-row">
                         <x-heroicon-s-phone class="h-auto w-5 mr-2" />
