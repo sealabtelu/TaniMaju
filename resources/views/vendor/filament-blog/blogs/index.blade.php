@@ -1,7 +1,7 @@
 <x-blog-layout>
-    <section class="py-40 w-full px-40 bg-[url({{asset('assets/bg.jpg')}})] bg-no-repeat bg-cover">
+    <section class="py-24 w-full px-40 bg-[url({{asset('assets/bg.jpg')}})] bg-no-repeat bg-cover">
                 <h1 class="font-poppins font-bold text-4xl text-olivine mb-4 home">TaniMaju</h1>
-                <p class="max-w-5xl text-cornsilk text-xl font-light">
+                <p class="max-w-4xl text-cornsilk text-xl font-light">
                     Website manajemen hasil panen yang dirancang untuk mendukung para petani di Desa Sukamaju, Bandung, Jawa Barat
                     sebagai solusi lengkap dalam mengelola data pertanian dengan lebih efisien dan akurat.
                 </p>
