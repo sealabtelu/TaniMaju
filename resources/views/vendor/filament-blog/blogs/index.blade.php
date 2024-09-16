@@ -52,7 +52,7 @@
                 dari kata <strong class="font-bold italic">"Tani"</strong> yang berarti pertanian dan <strong class="font-bold italic">"Maju"</strong> yang berarti kemajuan, mencerminkan tujuan kami
                 untuk memajukan sektor pertanian di Desa Sukamaju melalui teknologi. 
             </p>
-            <div class="flex items-start self-stretch justify-between items-center my-10 gap-x-2 md:gap-x-2">
+            <div class="flex items-start self-stretch justify-between items-center my-10 gap-x-2 md:gap-x-4">
                 @foreach ([
                     // ['name' => 'Sef Sofa Maulanaja', 'role' => 'Staff Team', 'image' => '../assets/SEF.png'],
                     ['name' => 'Panji Christopher', 'role' => 'Staff Team', 'image' => '../assets/YNA.png'],
