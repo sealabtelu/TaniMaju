@@ -3,15 +3,18 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Firefly\FilamentBlog\Traits\HasBlog;
 use Filament\Models\Contracts\HasAvatar;
 use Illuminate\Support\Facades\Storage;
+use Filament\Panel;
 
 
-class User extends Authenticatable implements HasAvatar
+class User extends Authenticatable implements HasAvatar, FilamentUser
 {
     use HasFactory, Notifiable, HasBlog;
 
@@ -59,5 +62,14 @@ class User extends Authenticatable implements HasAvatar
     public function getFilamentAvatarUrl(): ?string
     {
         return $this->avatar_url ? Storage::url("$this->avatar_url") : null;
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        if ($panel->getId() === '1' && in_array($this->id, [1, 2, 3])) {
+            return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
+        }
+ 
+        return true;
     }
 }

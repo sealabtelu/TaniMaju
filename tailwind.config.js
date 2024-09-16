@@ -35,5 +35,7 @@ export default {
             'app/Livewire/**',
         ],
     }),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
   ],
 }
