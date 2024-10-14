@@ -9,13 +9,11 @@ class Tanaman extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'nama_tanaman',
-        'deskripsi',
-    ];
+    protected $fillable = ['nama', 'pupuk_id'];
 
-    public function panens()
+    public function pupuk()
     {
-        return $this->hasMany(Panen::class);
+        return $this->belongsTo(Pupuk::class);
     }
 }
+

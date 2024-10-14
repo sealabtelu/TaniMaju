@@ -8,45 +8,55 @@ use Illuminate\Support\Facades\DB;
 class HarvestByPlant extends ChartWidget
 {
     protected static ?string $heading = 'Hasil Panen Berdasarkan Tanaman';
-
-    protected static ?string $pollingInterval = '360s';
+    protected static ?string $pollingInterval = '60s'; // Polling setiap 60 detik
     protected static ?int $sort = 2;
 
     protected function getType(): string
     {
-        return 'bar'; // Stacked bar chart
+        return 'bar'; // Menggunakan stacked bar chart
     }
 
     protected function getData(): array
     {
-        $harvestData = cache()->remember('harvest_data', 60, function () {
-            return DB::table('panens')
-                ->join('sawahs', 'panens.sawah_id', '=', 'sawahs.id')
-                ->join('tanamen', 'panens.tanaman_id', '=', 'tanamen.id')
-                ->select('sawahs.nama_sawah', 'tanamen.nama_tanaman', DB::raw('SUM(panens.jumlah) as total'))
-                ->groupBy('sawahs.nama_sawah', 'tanamen.nama_tanaman')
+        // Ambil dan cache data hasil panen
+        $harvestData = cache()->remember('harvest_data', 300, function () {
+            return DB::table('hasil_panens')
+                ->join('petanis', 'hasil_panens.petani_id', '=', 'petanis.id')
+                ->join('tanamen', 'hasil_panens.tanaman_id', '=', 'tanamen.id')
+                ->select('petanis.nama as nama_petani', 'tanamen.nama as nama_tanaman', DB::raw('SUM(hasil_panens.jumlah_hasil_panen) as total'))
+                ->groupBy('petanis.nama', 'tanamen.nama')
                 ->get();
         });
 
-        // Get unique sawah names and plant names
-        $labels = $harvestData->pluck('nama_sawah')->unique()->toArray();
-        $plantNames = $harvestData->pluck('nama_tanaman')->unique()->toArray();
+        $labels = [];
+        $datasets = [];
 
-        // Prepare datasets for each plant type
-        $datasets = array_map(function ($tanaman) use ($harvestData, $labels) {
-            return [
-                'label' => $tanaman,
-                'data' => array_map(function ($label) use ($harvestData, $tanaman) {
-                    $total = $harvestData->where('nama_sawah', $label)->where('nama_tanaman', $tanaman)->first()->total ?? 0;
-                    return $total;
-                }, $labels),
-                'backgroundColor' => $this->getRandomColor(), // Optional: Add color for each dataset
-            ];
-        }, $plantNames);
+        // Persiapan label dan dataset
+        foreach ($harvestData as $data) {
+            // Menambahkan nama petani ke label jika belum ada
+            if (!in_array($data->nama_petani, $labels)) {
+                $labels[] = $data->nama_petani;
+            }
+
+            // Menginisialisasi dataset untuk tanaman jika belum ada
+            $tanamanName = $data->nama_tanaman;
+
+            if (!isset($datasets[$tanamanName])) {
+                $datasets[$tanamanName] = [
+                    'label' => $tanamanName,
+                    'data' => array_fill(0, count($labels), 0), // Isi data dengan 0 awalnya
+                    'backgroundColor' => $this->getRandomColor(), // Warna random untuk tiap tanaman
+                ];
+            }
+
+            // Mengisi data sesuai dengan index petani
+            $petaniIndex = array_search($data->nama_petani, $labels);
+            $datasets[$tanamanName]['data'][$petaniIndex] = $data->total;
+        }
 
         return [
-            'labels' => $labels,
-            'datasets' => $datasets,
+            'labels' => $labels,  // Label untuk nama petani
+            'datasets' => array_values($datasets), // Konversi dataset ke array numerik
         ];
     }
 
@@ -66,10 +76,9 @@ class HarvestByPlant extends ChartWidget
         ];
     }
 
-    // Helper function to generate random colors for the datasets
+    // Fungsi untuk menghasilkan warna acak
     protected function getRandomColor(): string
     {
-        $colors = ['#FF6384', '#36A2EB', '#FFCE56', '#FF5733', '#DAF7A6'];
-        return $colors[array_rand($colors)];
+        return sprintf('#%06X', mt_rand(0, 0xFFFFFF));
     }
 }

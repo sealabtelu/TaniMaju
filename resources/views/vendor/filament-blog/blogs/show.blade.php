@@ -1,4 +1,7 @@
+@section('title', $post->title)
+
 <x-blog-layout>
+    
     <section class="pb-16">
         <div class="container mx-auto">
             <div class="mb-10 flex gap-x-2 text-sm font-semibold">
@@ -50,7 +53,7 @@
                                 <div class="mb-5 flex items-center justify-between gap-x-3 py-5">
                                     <div>
                                         <div class="flex items-center gap-4">
-                                            <img class="h-14 w-14 overflow-hidden rounded-full border-4 border-white bg-zinc-300 object-cover text-[0] ring-1 ring-slate-300" src="{{ asset($post->user->avatar_url) }}" alt="{{ $post->user->name() }}">
+                                            
                                             <div>
                                                 <span title="{{ $post->user->name() }}" class="block max-w-[150px] overflow-hidden text-ellipsis whitespace-nowrap font-semibold">{{ $post->user->name() }}</span>
                                                 <span class="block whitespace-nowrap text-sm font-semibold text-zinc-600">

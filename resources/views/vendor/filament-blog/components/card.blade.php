@@ -17,8 +17,6 @@
                 {!! tiptap_converter()->asHTML(Str::limit($post->body, 100), toc: true, maxDepth: 3) !!}
             </article>
             <div class="flex items-center gap-4">
-                <img class="h-14 w-14 overflow-hidden rounded-full border-4 border-white bg-zinc-300 object-cover text-[0] ring-1 ring-slate-300" src="{{ asset($post->user->avatar_url) }}" alt="{{ $post->user->name() }}">
-
                 <div>
                     <span title="{{ $post->user->name() }}"
                           class="block max-w-[150px] overflow-hidden text-ellipsis whitespace-nowrap text-sm font-semibold">{{ $post->user->name() }}</span>

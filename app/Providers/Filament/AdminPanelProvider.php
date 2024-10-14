@@ -22,6 +22,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Firefly\FilamentBlog\Blog;
 use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
 use Joaopaulolndev\FilamentEditProfile\Pages\EditProfilePage;
+use Filament\Navigation\NavigationGroup;
 
 
 class AdminPanelProvider extends PanelProvider
@@ -44,6 +45,14 @@ class AdminPanelProvider extends PanelProvider
                     ->url('/', shouldOpenInNewTab: true)
                     ->icon('heroicon-s-globe-alt')
                     ->sort(2),
+            ])
+            ->navigationGroups([
+                NavigationGroup::make()
+                     ->label('Pencatatan'),
+                NavigationGroup::make()
+                    ->label('Data Umum'),
+                NavigationGroup::make()
+                    ->label('Blog'),
             ])        
             ->brandLogo(asset('assets/logo-tanimaju-h.png'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
@@ -80,8 +89,6 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-                // Widgets\AccountWidget::class,
-                // Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

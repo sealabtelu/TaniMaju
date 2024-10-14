@@ -9,14 +9,11 @@ class Pupuk extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'nama_pupuk',
-        'jenis_pupuk',
-        'stok_pupuk',
-    ];
+    protected $fillable = ['nama', 'jenis'];
 
     public function tanamans()
     {
         return $this->hasMany(Tanaman::class);
     }
 }
+

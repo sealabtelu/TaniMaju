@@ -17,28 +17,27 @@ class PetaniResource extends Resource
 {
     protected static ?string $model = Petani::class;
 
-    protected static ?string $navigationIcon = 'healthicons-f-agriculture-worker';
+    protected static ?string $navigationIcon = 'healthicons-o-agriculture-worker';
 
     protected static ?string $pluralLabel = 'Petani';
 
-    protected static ?string $navigationGroup = 'Management';
+    protected static ?string $navigationGroup = 'Data Umum';
 
-    protected static ?int $navigationSort = 6;
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nama_petani')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('alamat_petani')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('nomor_telepon')
-                    ->maxLength(20),
+                Forms\Components\TextInput::make('nama')
+                    ->required(),
+                Forms\Components\TextInput::make('alamat'),
+                Forms\Components\TextInput::make('nomor_kontak')
+                    ->required(),
                 Forms\Components\FileUpload::make('foto')
                     ->image()
                     ->imageEditor()
+                    ->circleCropper()
                     ->directory('petani_fotos')
                     ->required(),
             ]);
@@ -48,15 +47,21 @@ class PetaniResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nama_petani')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('alamat_petani')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('nomor_telepon')->sortable()->searchable(),
-                Tables\Columns\ImageColumn::make('foto')
-                    ->label('Foto Petani')
-                    ->disk('public')
+                Tables\Columns\TextColumn::make('nama')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')->dateTime('d M Y H:i')->sortable(),
-                
+                Tables\Columns\TextColumn::make('alamat')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('nomor_kontak')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\ImageColumn::make('foto'),
             ])
             ->filters([
                 //

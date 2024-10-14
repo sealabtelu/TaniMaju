@@ -3,18 +3,20 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str; // Import Str class
-use Illuminate\Support\Facades\Log; // Import Log class
+use Illuminate\Support\Str; 
+use Illuminate\Support\Facades\Log; 
 use Illuminate\Http\Request;
 use App\Models\User;
 use Firefly\FilamentBlog\Models\Comment;
 use Firefly\FilamentBlog\Models\Post;
 
-
 Route::get('/', function () {
     return redirect('/home'); 
 });
 
+Route::get('/foo', function () {
+    Artisan::call('storage:link');
+});
 
 Route::post('/posts/{post:slug}/comment', function (Request $request, Post $post) {
     // Validate request data
@@ -24,7 +26,6 @@ Route::post('/posts/{post:slug}/comment', function (Request $request, Post $post
         'comment' => 'required',
     ]);
 
-    // Find or create the user
     $user = User::firstOrCreate(
         ['email' => $validated['email']],
         ['name' => $validated['name'], 'password' => Hash::make(Str::random(16))]
@@ -32,10 +33,8 @@ Route::post('/posts/{post:slug}/comment', function (Request $request, Post $post
 
     Log::info('User created or found:', ['user_id' => $user->id]);
 
-    // Log post retrieval
     Log::info('Post retrieved:', ['post_id' => $post->id]);
 
-    // Insert the comment directly into the comments table
     try {
         $inserted = DB::table('fblog_comments')->insert([
             'user_id' => $user->id,
@@ -46,12 +45,10 @@ Route::post('/posts/{post:slug}/comment', function (Request $request, Post $post
             'created_at' => now()->format('Y-m-d H:i:s'),
             'updated_at' => now()->format('Y-m-d H:i:s'),
         ]);
-
         Log::info('Comment inserted:', ['inserted' => $inserted]);
     } catch (\Exception $e) {
         Log::error('Comment insertion failed:', ['error' => $e->getMessage()]);
         return redirect()->back()->with('error', 'Failed to post comment.');
     }
-
     return redirect()->back()->with('success', 'Your comment has been posted!');
 })->name('filamentblog.comment.store');

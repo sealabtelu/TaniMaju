@@ -5,8 +5,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Open Graph Meta Tags for WhatsApp, Facebook, etc. -->
+    <meta property="og:title" content="{{ $post->title ?? 'TaniMaju' }}" />
+    <meta property="og:description" content="{{ $post->excerpt ?? 'Website Management Hasil Pangan' }}" />
+    <meta property="og:image" content="{{ $post->featured_image_url ?? asset('assets/default-image.jpg') }}" />
+    <meta property="og:url" content="{{ request()->url() }}" />
+    <meta property="og:site_name" content="TaniMaju" />
+    <meta property="og:type" content="article" />
+    
+    <!-- Twitter Card Meta Tags for Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ $post->title ?? 'TaniMaju' }}" />
+    <meta name="twitter:description" content="{{ $post->excerpt ?? 'Website Management Hasil Pangan' }}" />
+    <meta name="twitter:image" content="{{ $post->featured_image_url ?? asset('assets/default-image.jpg') }}" />
+
     <link rel="icon" href="{{asset('assets/logo-tanimaju.png')}}" type="image/x-icon" />
-    <title>TaniMaju</title>
+    <title>@yield('title', 'TaniMaju')</title>
     {!! \Firefly\FilamentBlog\Facades\SEOMeta::generate() !!}
     {!! $setting?->google_console_code !!}
     {!! $setting?->google_analytic_code !!}

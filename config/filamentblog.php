@@ -20,10 +20,10 @@ return [
     'route' => [
         'prefix' => 'home',
         'middleware' => ['web'],
-        //        'home' => [
-        //            'name' => 'filamentblog.home',
-        //            'url' => env('APP_URL'),
-        //        ],
+               'home' => [
+                   'name' => 'filamentblog.home',
+                   'url' => env('APP_URL'),
+               ],
         'login' => [
             'name' => 'filamentblog.post.login',
         ],
@@ -38,11 +38,12 @@ return [
     ],
     'seo' => [
         'meta' => [
-            'title' => 'TaniMaju',
-            'description' => 'Website Management Hasil Pangan',
-            'keywords' => ["Website Management Hasil Pangan", "Pertanian","Agrikultur","Desa Sukamaju","Desa Jawa Barat"],
+            'title' => $post->title ?? 'TaniMaju', // Default title
+            'description' => 'Website Management Hasil Pangan', // Default description
+            'keywords' => ["Website Management Hasil Pangan", "Pertanian", "Agrikultur", "Desa Sukamaju", "Desa Jawa Barat"],
         ],
-    ],
+],
+
 
     'recaptcha' => [
         'enabled' => false, // true or false

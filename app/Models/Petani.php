@@ -9,20 +9,11 @@ class Petani extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'nama_petani',
-        'alamat_petani',
-        'nomor_telepon',
-        'foto',
-    ];
+    protected $fillable = ['nama', 'alamat', 'nomor_kontak', 'foto'];
 
-    public function sawahs()
+    public function lahans()
     {
-        return $this->hasMany(Sawah::class);
-    }
-
-    public function panens()
-    {
-        return $this->hasMany(Panen::class);
+        return $this->hasMany(Lahan::class);
     }
 }
+

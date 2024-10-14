@@ -17,33 +17,42 @@ class TanamanResource extends Resource
 {
     protected static ?string $model = Tanaman::class;
 
-    protected static ?string $navigationIcon = 'phosphor-plant-duotone';
+    protected static ?string $navigationIcon = 'ri-plant-line';
 
     protected static ?string $pluralLabel = 'Tanaman';
 
-    protected static ?string $navigationGroup = 'Management';
+    protected static ?string $navigationGroup = 'Data Umum';
 
-    protected static ?int $navigationSort = 2;
-
+    protected static ?int $navigationSort = 4;
 
     public static function form(Form $form): Form
     {
         return $form
-        ->schema([
-            Forms\Components\TextInput::make('nama_tanaman')
-                ->required()
-                ->maxLength(255),
-            Forms\Components\Textarea::make('deskripsi')
-                ->maxLength(500),
-        ]);
+            ->schema([
+                Forms\Components\TextInput::make('nama')->required(),
+                Forms\Components\Select::make('pupuk_id')
+                    ->relationship('pupuk', 'nama')
+                    ->required(),
+            ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nama_tanaman')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('deskripsi')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('nama')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('pupuk.nama')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

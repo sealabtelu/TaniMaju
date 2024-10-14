@@ -4,8 +4,8 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "compose": "composer require filament/filament firefly/filament-blog joaopaulolndev/filament-edit-profile blade-ui-kit/blade-icons && composer dumpautoload && php artisan migrate",
-        "initialize": "php artisan filament:install --panels && php artisan filament-blog:install && php artisan vendor:publish --tag=blade-icons && composer require faisal50x/blade-ionicons codeat3/blade-phosphor-icons troccoli/blade-health-icons codeat3/blade-fluentui-system-icons"
+        "compose": "composer require filament/filament firefly/filament-blog joaopaulolndev/filament-edit-profile blade-ui-kit/blade-icons pxlrbt/filament-excel && composer dumpautoload && php artisan migrate",
+        "initialize": "php artisan filament:install --panels && php artisan filament-blog:install && php artisan vendor:publish --tag=blade-icons && composer require faisal50x/blade-ionicons codeat3/blade-phosphor-icons troccoli/blade-health-icons codeat3/blade-fluentui-system-icons andreiio/blade-remix-icon"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.9",
@@ -13,8 +13,8 @@
         "autoprefixer": "^10.4.20",
         "axios": "^1.7.4",
         "laravel-vite-plugin": "^1.0",
-        "postcss": "^8.4.45",
-        "tailwindcss": "^3.4.11",
+        "postcss": "^8.4.47",
+        "tailwindcss": "^3.4.13",
         "vite": "^5.0"
     }
 }

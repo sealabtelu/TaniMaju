@@ -21,23 +21,19 @@ class PupukResource extends Resource
 
     protected static ?string $pluralLabel = 'Pupuk';
 
-    protected static ?string $navigationGroup = 'Management';
+    protected static ?string $navigationGroup = 'Data Umum';
 
-    protected static ?int $navigationSort = 4;
+    protected static ?int $navigationSort = 5;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nama_pupuk')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('jenis_pupuk')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('stok_pupuk')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\TextInput::make('nama')->required(),
+                Forms\Components\Select::make('jenis')->options([
+                    'Organik' => 'Organik',
+                    'Non-organik' => 'Non-organik',
+                ])->required(),
             ]);
     }
 
@@ -45,13 +41,10 @@ class PupukResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nama_pupuk')
+                Tables\Columns\TextColumn::make('nama')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('jenis_pupuk')
+                Tables\Columns\TextColumn::make('jenis')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('stok_pupuk')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

@@ -43,10 +43,10 @@ class StatsAdminOverview extends BaseWidget
                 )
                 ->color('success'),
 
-            Stat::make('Total Sawah', DB::table('sawahs')->count())
+            Stat::make('Total Lahan', DB::table('lahans')->count())
                 ->description('Jumlah Sawah Saat Ini')
                 ->chart(
-                    DB::table('sawahs')
+                    DB::table('lahans')
                         ->select(DB::raw('COUNT(*) as count'), DB::raw('DATE(created_at) as date'))
                         ->groupBy('date')
                         ->orderBy('date', 'asc')  // Now ordering by the grouped 'date'
